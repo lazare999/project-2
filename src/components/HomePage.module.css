@@ -1,0 +1,62 @@
+/* Home.module.css */
+
+/* Style for the Slider container */
+.slider-container {
+    width: 100%; /* Adjust the width to your preference */
+    margin: 0 auto; /* Center the slider horizontally */
+  }
+  
+  /* Style for the individual slide */
+  .slider-slide {
+    display: flex; /* Ensure the images are displayed side by side */
+    justify-content: center; /* Center the image within the slide */
+  }
+  
+  /* Style for the images inside the slides */
+  .slider-image {
+    max-width: fit-content; /* Make sure the images don't exceed the slide width */
+    max-height: max-content; /* Maintain the image aspect ratio */
+  }
+
+/* Style for the links container */
+.links-container {
+  display: grid; /* Use CSS Grid to create a responsive layout */
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr)); /* Create multiple columns with a minimum width of 20% each */
+  grid-gap: 10px; /* Add some spacing between the links */
+  justify-content: center; /* Center the content horizontally */
+  margin-top: 20px; /* Add some spacing between the slider and the links */
+}
+
+.link-style {
+  text-decoration: none;
+  border-radius: 5px;
+  /* Add any other styles you want here */
+}
+
+.section {
+  padding: 15px;
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.section figure {
+  text-align: center;
+  margin: 0;
+  /* width: 200px; */
+}
+
+.section figure img {
+  width: 300px;
+  border-radius: 3px;
+}
+
+/* RESPONSIVE RULES */
+
+@media screen and (max-width: 1100px) {
+  .slider-container {
+    display: none;
+  }
+}

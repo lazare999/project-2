@@ -1,0 +1,205 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(100, 100, 100);
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+a {
+  text-decoration: none;
+  color: aliceblue;
+}
+
+a:hover {
+  color: gray;
+}
+
+.active {
+  color: rgb(241, 83, 83);
+}
+
+.category {
+  display: flex; /* Apply display flex */
+  justify-content: space-between; /* Adjust the spacing between items */
+  align-items: center;
+}
+
+.category p {
+  margin: 0.5em; /* Add spacing around <p> tags */
+}
+
+
+
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdownTrigger {
+  display: inline-block;
+  position: relative;
+}
+
+
+.dropdownContainer {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdownTrigger {
+  display: inline-block;
+  align-items: center;
+  position: relative;
+}
+
+.dropdownTriggerp{
+  display: flex;
+  align-items: center;
+}
+
+/* .dropdownTrigger::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #000;
+  margin-left: 5px;
+} */
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdownTrigger:hover .dropdownContent {
+  display: block;
+ 
+}
+
+.dropdownContent a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: black;
+}
+
+
+.dropdownContent a:hover {
+  background-color: #e5e5e5;
+  color: #000;
+}
+
+
+.burgerIcon {
+  display: none;
+  cursor: pointer;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.profileIcon {
+  cursor: pointer;
+  /* Add any additional styles for the profile icon */
+}
+
+.favoritesIcon {
+  cursor: pointer;
+  animation: beatHeart 0.8s infinite;
+  /* Add any additional styles for the favorites icon */
+}
+
+.cartIcon {
+  cursor: pointer;
+  position: relative;
+  /* Add any additional styles for the cart icon */
+}
+
+.cartItemCount {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+.iconsContainer {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .burgerIcon {
+    display: block;
+  }
+
+  .category {
+    display: none;
+  }
+
+  .navModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+  }
+
+  .modalCategory {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .modalCategory a {
+    color: #fff;
+  }
+  .dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #696969;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 0;
+    margin: 0;
+  }
+
+  
+  .iconsContainer {
+    display: flex;
+    gap: 10px;
+  }
+
+  .iconsContainer .icon {
+    display: none;
+  }
+}
