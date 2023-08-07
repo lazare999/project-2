@@ -1,4 +1,4 @@
-import { NavLink, useLocation  } from "react-router-dom";
+import { NavLink  } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -11,8 +11,7 @@ import outdoorImg from './images/outdoor.jpg'
 import officeImg from './images/office.jpg'
 
 function HomePage() {
-  const location = useLocation();
-  // const thisPath =  location?.state?.indoor || location?.state?.outdoor || location?.state?.office;
+
 
   const settings = {
     dots: false,

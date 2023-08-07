@@ -11,7 +11,7 @@ function Indoor(props) {
   const [selectedItem, setSelectedItem] = useState(null);
   const cartCtx = useContext(CartContext);
   const location = useLocation();
-  const thisPath =  location?.state?.indoor || location?.state?.outdoor || location?.state?.office;
+  const thisPath = location?.state?.indoor || location?.state?.outdoor || location?.state?.office;
   console.log(thisPath);
   const dispatch = useDispatch();
 
@@ -46,7 +46,7 @@ function Indoor(props) {
   if (!data) {
     return <div>Loading...</div>;
   }
- 
+
   function addToFavoritesHandler(item) {
     dispatch(addToFavorites(item));
   }
@@ -54,7 +54,7 @@ function Indoor(props) {
   function DetailModal() {
     return (
       <>
-        <div className={classes.modalWrapper}>
+        <div className={classes.modalWrapper} >
           <div className={classes.modalBackdrop} onClick={closeModal} />
           <div className={classes.modalBox}>
             <div className={classes.modal}>
@@ -77,14 +77,15 @@ function Indoor(props) {
                   <h4 className={classes.price}>{selectedItem.price} $</h4>
                 </div>
               </div>
-                <div>
+              <div>
                 <button onClick={() => addToFavoritesHandler(allSelectedItem)}>
-          Add Favorites
-        </button>
-                  <button onClick={() => cartCtx.addItem(allSelectedItem)}>
-                    Add Cart
-                  </button>
-                </div>
+                  Add Favorites
+                </button>
+                <button onClick={() => cartCtx.addItem(selectedItem)}>
+                  Add Cart
+                </button>
+          
+              </div>
             </div>
           </div>
         </div>
@@ -94,29 +95,29 @@ function Indoor(props) {
 
   return (
     <>
-    <div className={classes.bigContainer}>
-      {Object.values(data).map((item) => (
-        <>
-        <div
-          key={item.title}
-          className={classes.container}
-          onClick={() => openModal(item)}
-        >
-          <div>
-            <img src={item.image} alt="indoor" className={classes.image} />
-          </div>
-          <div className={classes.details}>
-            <h3 className={classes.title}>{item.title}</h3>
-            <h4 className={classes.price}>{item.price} $</h4>
-          </div>
-        </div>
-          {/* <div>
-            <button onClick={() => cartCtx.addItem(item)}>Add Cart</button>
-          </div> */}
-        </>
-      ))}
+      <div className={classes.bigContainer} >
+        {Object.values(data).map((item) => (
+          <>
+            <div
+              key={item.id}
+              className={classes.container}
+              onClick={() => openModal(item)}
+            >
+              <div>
+                <img src={item.image} alt="indoor" className={classes.image} />
+              </div>
+              <div className={classes.details}>
+                <h3 className={classes.title}>{item.title}</h3>
+                <h4 className={classes.price}>{item.price} $</h4>
+              </div>
+            {/* <div>
+              <button onClick={() => cartCtx.addItem(item)}>Add Cart</button>
+            </div> */}
+            </div>
+          </>
+        ))}
 
-      {showModal && <DetailModal closeModal={closeModal} />}
+        {showModal && <DetailModal closeModal={closeModal} />}
       </div>
     </>
   );

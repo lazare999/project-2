@@ -10,13 +10,14 @@ import {
 import { useState, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { setAdminStatus } from "./action";
+
+import { setAdminStatus, resetAdminStatus } from './action';
 
 import Profile from "./Profile";
 
 
 function Auth() {
-  const dispatch = useDispatch(); // Get the dispatch function from react-redux
+  const dispatch = useDispatch(); 
   const isAdmin = useSelector((state) => state.isAdmin);
 
   
@@ -75,7 +76,7 @@ function Auth() {
       setIsSignedIn(true);
       const storedName = localStorage.getItem("enteredName");
       if (storedName) {
-        nameChangedHandler(storedName); // Set the enteredName from localStorage to the state
+        nameChangedHandler(storedName); 
       }
     }
   }, [nameChangedHandler]);
@@ -198,10 +199,12 @@ function Auth() {
 
 
   const handleLogout = () => {
-    // Clear the user's signed-in status and remove the token from localStorage
+
     setIsSignedIn(false);
     localStorage.removeItem("token");
     localStorage.removeItem("userName");
+
+    dispatch(resetAdminStatus());
   };
 
 

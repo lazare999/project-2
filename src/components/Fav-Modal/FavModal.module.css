@@ -19,7 +19,7 @@
   .modalBox {
     position: fixed;
     top: 50%;
-    right: 0; /* Position the modal to the right side */
+    right: 0; 
     transform: translateY(-50%);
     height: 190%;
     width: 30%;
@@ -51,7 +51,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-height: 70vh; /* Limit the height of the modal to 70% of the viewport height */
+    max-height: 70vh;
   overflow-y: auto; 
   }
   

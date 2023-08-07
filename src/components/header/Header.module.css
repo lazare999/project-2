@@ -22,13 +22,13 @@ a:hover {
 }
 
 .category {
-  display: flex; /* Apply display flex */
-  justify-content: space-between; /* Adjust the spacing between items */
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 .category p {
-  margin: 0.5em; /* Add spacing around <p> tags */
+  margin: 0.5em; 
 }
 
 
@@ -120,19 +120,19 @@ a:hover {
 
 .profileIcon {
   cursor: pointer;
-  /* Add any additional styles for the profile icon */
+  
 }
 
 .favoritesIcon {
   cursor: pointer;
   animation: beatHeart 0.8s infinite;
-  /* Add any additional styles for the favorites icon */
+
 }
 
 .cartIcon {
   cursor: pointer;
   position: relative;
-  /* Add any additional styles for the cart icon */
+
 }
 
 .cartItemCount {

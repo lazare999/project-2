@@ -21,3 +21,10 @@ export const setAdminStatus = (isAdmin) => {
       payload: itemId,
     };
   };
+
+  export const resetAdminStatus = () => {
+    return {
+      type: 'SET_ADMIN_STATUS',
+      payload: false,
+    };
+  };

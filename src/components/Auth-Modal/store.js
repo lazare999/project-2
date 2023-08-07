@@ -5,7 +5,7 @@ import { configureStore } from '@reduxjs/toolkit';
 // Initial state of the store
 const initialState = {
   isAdmin: false,
-  favorites: [], // Default value is false, you can change it based on your requirements
+  favorites: [], 
 };
 
 // Reducer function to handle actions and update state
@@ -19,21 +19,32 @@ const rootReducer = (state = initialState, action) => {
       case "ADD_TO_FAVORITES":
         return {
           ...state,
-          favorites: [...state.favorites, action.payload], // Add the item to favorites array
+          favorites: [...state.favorites, action.payload],
         };
         case "REMOVE_FROM_FAVORITES":
           return {
             ...state,
-            favorites: state.favorites.filter((item) => item.id !== action.payload), // Remove the item from favorites array
+            favorites: state.favorites.filter((item) => item.id !== action.payload),
           };
     default:
       return state;
   }
 };
 
-// Create the Redux store using configureStore
+// Load initial state from local storage, if available
+const persistedState = localStorage.getItem('reduxState')
+  ? JSON.parse(localStorage.getItem('reduxState'))
+  : initialState;
+
+// Create the Redux store using configureStore and pass the persisted state
 const store = configureStore({
   reducer: rootReducer,
+  preloadedState: persistedState,
+});
+
+// Save the state to local storage whenever the state changes
+store.subscribe(() => {
+  localStorage.setItem('reduxState', JSON.stringify(store.getState()));
 });
 
 export default store;
