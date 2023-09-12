@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import CartContext from "../../store/cart-context";
 
+import classes from './Cart.module.css'
+
 function Cart(props) {
   const cartCtx = useContext(CartContext);
 
@@ -12,6 +14,8 @@ function Cart(props) {
     cartCtx.clearCart();
   };
 
+  // console.log(cartCtx.items)
+
   return (
     <>
       <div>
@@ -19,20 +23,40 @@ function Cart(props) {
         <ul>
           {cartCtx.items.map((item) => (
             <div key={item.id}>
-              <li>
-                {item.title} - Quantity: {item.quantity}
-              </li>
-              <button onClick={() => removeItemHandler(item.id)}>Remove</button>
+              <div className={classes.cartItem}>
+                <img src={item.image} alt="imag21" className={classes.img} />
+                <div style={{ marginLeft: '10px' }}>
+                  <p style={{ fontSize: '20px' }}>
+                    {item.title}
+                  </p>
+                  <p style={{ fontSize: '17px' }}>Quantity: {item.quantity}</p>
+                  <div className={classes.priceDiv}>
+                    <p style={{ fontSize: '20px' }}>Price: <span className={classes.price}> {item.price}$</span></p>
+                    <button onClick={() => removeItemHandler(item.id)} className={classes.btn}>Remove</button>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </ul>
-        <div>
-          <span>Total amount:</span>
-          <span>{cartCtx.totalAmount}$</span>
-        </div>
-        <div>
-          <button onClick={checkoutHandler}>Check Out</button>
-        </div>
+        <hr />
+        {cartCtx.items.length > 0 && (  
+          <>
+            <div className={classes.checkOut}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <span style={{ fontSize: '20px' }}>Total amount:</span>
+                <span className={classes.price}>{cartCtx.totalAmount}$</span>
+              </div>
+              <div>
+                <button onClick={checkoutHandler} className={classes.checkOutBtn}>Check Out</button>
+              </div>
+            </div>
+          </>
+        )}
+        {cartCtx.items.length === 0 && ( 
+          <h2>Your cart is empty.</h2>
+        )}
+        <hr />
       </div>
     </>
   );

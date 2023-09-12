@@ -22,8 +22,8 @@ const cartReducer = (state, action) => {
         quantity: existingItem.quantity + 1,
       };
       updatedItems[existingItemIndex] = updatedItem;
-
-      const updatedTotalAmount = state.totalAmount + action.item.price;
+      // console.log(action.item.shiping)
+      const updatedTotalAmount = state.totalAmount + action.item.price + action.item.shiping;
 
       return {
         items: updatedItems,
@@ -32,7 +32,7 @@ const cartReducer = (state, action) => {
     } else {
     
       const updatedItems = [...state.items, { ...action.item, quantity: 1 }];
-      const updatedTotalAmount = state.totalAmount + action.item.price;
+      const updatedTotalAmount = state.totalAmount + action.item.price + action.item.shiping;
 
       return {
         items: updatedItems,
@@ -54,7 +54,7 @@ const cartReducer = (state, action) => {
           (item) => item.id !== action.id
         );
 
-        const updatedTotalAmount = state.totalAmount - existingItem.price;
+        const updatedTotalAmount = state.totalAmount - existingItem.price - existingItem.shiping;
 
         return {
           items: updatedItems,
@@ -69,7 +69,7 @@ const cartReducer = (state, action) => {
         };
         updatedItems[existingItemIndex] = updatedItem;
 
-        const updatedTotalAmount = state.totalAmount - existingItem.price;
+        const updatedTotalAmount = state.totalAmount - existingItem.price - existingItem.shiping;
 
         return {
           items: updatedItems,
@@ -118,6 +118,8 @@ const CartProvider = (props) => {
     removeItem: removeItemFromCartHandler,
     clearCart: clearCartHandler,
   };
+
+// console.log(cartContext)
 
   return (
     <CartContext.Provider value={cartContext}>

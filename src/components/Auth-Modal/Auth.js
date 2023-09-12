@@ -17,16 +17,16 @@ import Profile from "./Profile";
 
 
 function Auth() {
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   const isAdmin = useSelector((state) => state.isAdmin);
 
-  
+
   const [searchParams] = useSearchParams();
   const isLogin = searchParams.get("mode") === "login";
 
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [userName, setUserName] = useState('');
-  
+
   const {
     value: enteredName,
     isValid: enteredNameIsValid,
@@ -76,7 +76,7 @@ function Auth() {
       setIsSignedIn(true);
       const storedName = localStorage.getItem("enteredName");
       if (storedName) {
-        nameChangedHandler(storedName); 
+        nameChangedHandler(storedName);
       }
     }
   }, [nameChangedHandler]);
@@ -97,7 +97,7 @@ function Auth() {
 
       .catch((error) => {
         setErrorMessage("Invalid email or password.");
-       
+
         // Clear the error message after 3000 milliseconds (3 seconds)
         setTimeout(() => {
           setErrorMessage("");
@@ -164,7 +164,7 @@ function Auth() {
       console.log(data);
       const token = userCredential.user.accessToken;
       localStorage.setItem("token", token);
-      localStorage.setItem("userName", enteredName); 
+      localStorage.setItem("userName", enteredName);
       setIsSignedIn(true);
       resetNameInput();
       resetEmailInput();
@@ -210,115 +210,119 @@ function Auth() {
 
   if (isSignedIn) {
     return <>
-        <Profile userNameFromEmail={userName}/>
-        <button onClick={handleLogout}>Logout</button>
-      </>;
+      <Profile userNameFromEmail={userName} />
+      <button onClick={handleLogout}>Logout</button>
+    </>;
   }
 
   return (
     <>
       {isLogin && (
-        <form onSubmit={signInHandler}>
+        <form onSubmit={signInHandler} className={classes.form}>
+          <div className={classes.singIn}>
           <h2>{isLogin ? "Log In" : "Sign Up"}</h2>
           {errorMessage && <p className={classes.error}>{errorMessage}</p>}
-          <label className={emailInputClasses}>
-            <p>Email</p>
-            <input
-              type="email"
-              id="email"
-              onChange={emailChangeHandler}
-              onBlur={emailBlurHandler}
-              onFocus={() => setErrorMessage("")} // Clear error on focus
-              value={enteredEmail}
-            />
-            {emailInputHasError && (
-              <p className={classes.error}>Please enter a valid email.</p>
-            )}
-          </label>
-          <label>
-            <p>Password</p>
-            <input
-              type="password"
-              id="password"
-              onChange={passwordChangeHandler}
-              onBlur={passwordBlurHandler}
-              value={enteredPassword}
-            />
-            {passwordInputHasError && (
-              <p className={classes.error}>Please enter a valid password.</p>
-            )}
-          </label>
-          <div>
-            <button disabled={!formIsValid}>Submit</button>
-          </div>
-       
-          <div>
-            <Link
-              className={classes.link}
-              to={`?mode=${isLogin ? "signup" : "login"}`}
-            >
-              {isLogin ? "Sign Up" : "Login"}
-            </Link>
+            <label className={emailInputClasses}>
+              <p>Email</p>
+              <input
+                type="email"
+                id="email"
+                onChange={emailChangeHandler}
+                onBlur={emailBlurHandler}
+                onFocus={() => setErrorMessage("")} // Clear error on focus
+                value={enteredEmail}
+              />
+              {emailInputHasError && (
+                <p className={classes.error}>Please enter a valid email.</p>
+              )}
+            </label>
+            <label>
+              <p>Password</p>
+              <input
+                type="password"
+                id="password"
+                onChange={passwordChangeHandler}
+                onBlur={passwordBlurHandler}
+                value={enteredPassword}
+              />
+              {passwordInputHasError && (
+                <p className={classes.error}>Please enter a valid password.</p>
+              )}
+            </label>
+            <div>
+              <button disabled={!formIsValid} className={classes.btn}>Submit</button>
+            </div>
+
+            <div style={{marginTop: '10px'}}>
+              <Link
+                className={classes.link}
+                to={`?mode=${isLogin ? "signup" : "login"}`}
+              >
+                {isLogin ? "Sign Up" : "Login"}
+              </Link>
+            </div>
           </div>
         </form>
       )}
 
       {!isLogin && (
         <form onSubmit={formSubmissionHandler && signUpHandler}>
+          <div className={classes.singIn}>
           <h2>{isLogin ? "Log In" : "Sign Up"}</h2>
           {errorMessage && <p className={classes.error}>{errorMessage}</p>}
-          <label className={nameInputClasses}>
-            <p>Name</p>
-            <input
-              type="text"
-              id="name"
-              onChange={nameChangedHandler}
-              onBlur={nameBlurHandler}
-              onFocus={() => setErrorMessage("")} // Clear error on focus
-              value={enteredName}
-            />
-            {nameInputHasError && (
-              <p className={classes.error}>Please enter a valid name.</p>
-            )}
-          </label>
-          <label className={emailInputClasses}>
-            <p>Email</p>
-            <input
-              type="email"
-              id="email"
-              onChange={emailChangeHandler}
-              onBlur={emailBlurHandler}
-              onFocus={() => setErrorMessage("")} // Clear error on focus
-              value={enteredEmail}
-            />
-            {emailInputHasError && (
-              <p className={classes.error}>Please enter a valid email.</p>
-            )}
-          </label>
-          <label>
-            <p>Password</p>
-            <input
-              type="password"
-              id="password"
-              onChange={passwordChangeHandler}
-              onBlur={passwordBlurHandler}
-              value={enteredPassword}
-            />
-            {passwordInputHasError && (
-              <p className={classes.error}>Please enter a valid password.</p>
-            )}
-          </label>
-          <div>
-            <button disabled={!formIsValid}>Submit</button>
-          </div>
-          
-          <div>
-            <Link
-              className={classes.link}
-              to={`?mode=${isLogin ? "signup" : "login"}`}
-            >
-              {isLogin ? "Sign Up" : "Login"}
-            </Link>
+            <label className={nameInputClasses}>
+              <p>Name</p>
+              <input
+                type="text"
+                id="name"
+                onChange={nameChangedHandler}
+                onBlur={nameBlurHandler}
+                onFocus={() => setErrorMessage("")} // Clear error on focus
+                value={enteredName}
+              />
+              {nameInputHasError && (
+                <p className={classes.error}>Please enter a valid name.</p>
+              )}
+            </label>
+            <label className={emailInputClasses}>
+              <p>Email</p>
+              <input
+                type="email"
+                id="email"
+                onChange={emailChangeHandler}
+                onBlur={emailBlurHandler}
+                onFocus={() => setErrorMessage("")} // Clear error on focus
+                value={enteredEmail}
+              />
+              {emailInputHasError && (
+                <p className={classes.error}>Please enter a valid email.</p>
+              )}
+            </label>
+            <label>
+              <p>Password</p>
+              <input
+                type="password"
+                id="password"
+                onChange={passwordChangeHandler}
+                onBlur={passwordBlurHandler}
+                value={enteredPassword}
+              />
+              {passwordInputHasError && (
+                <p className={classes.error}>Please enter a valid password.</p>
+              )}
+            </label>
+            <div>
+              <button disabled={!formIsValid} className={classes.btn}>Submit</button>
+            </div>
+
+            <div style={{marginTop: '10px'}}>
+              <Link
+                className={classes.link}
+                to={`?mode=${isLogin ? "signup" : "login"}`}
+              >
+                {isLogin ? "Sign Up" : "Login"}
+              </Link>
+            </div>
           </div>
         </form>
       )}

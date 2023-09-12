@@ -4,11 +4,12 @@
   position: relative;
   cursor: pointer; 
   transition: transform 0.2s ease-out; 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
 }
 
 
 .container:hover {
-  transform: scale(0.95); 
+  transform: scale(0.96); 
 }
 
 .bigContainer {
@@ -21,11 +22,12 @@
 .image {
   width: 250px;
   height: 250px;
-  margin-right: 20px;
+  margin: 10px;
 }
 
 .details {
   flex: 1;
+  margin: 10px;
 }
 
 .title {
@@ -36,7 +38,7 @@
 
 .price {
   font-size: 16px;
-  color: #777777;
+  color: #2a8703;
   margin-bottom: 10px;
 }
 

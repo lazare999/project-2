@@ -10,7 +10,7 @@ function Footer() {
       <br/>
       <br/>
       <footer className={classes.footer}>
-        <h6>this is a footer</h6>
+        <h6 className={classes.footerText}>this is a footer</h6>
       </footer>
     </div>
   );

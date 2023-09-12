@@ -46,7 +46,7 @@ function Header() {
 
   const numberOfCartItems = cartCtx.items.length;
 
-
+  
 
   return (
     <>
@@ -67,24 +67,24 @@ function Header() {
               isActive ? classes.active : undefined
             }
           >
-            <p>Home</p>
+            <p className={classes.forActive}>Home</p>
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="add-products"
             className={({ isActive }) =>
               isActive ? classes.active : undefined
             }
           >
-            <p>Add Products</p>
-          </NavLink>
+            <p className={classes.forActive}>Add Products</p>
+          </NavLink> */}
           <div className={classes.dropdownContainer}>
             <NavLink
-              to="#"
+              // to="#"
               className={classes.dropdownTrigger}
               onMouseEnter={() => setIsDropdownOpen(true)}
               onMouseLeave={() => setIsDropdownOpen(false)}
             >
-              <p>Collections</p>
+              <p className={classes.forActive}>Collections</p>
               {isDropdownOpen && (
                 <div className={classes.dropdownContent}>
                   <NavLink to="/indoor" state={{ indoor: indoor }}>Indoor</NavLink>
@@ -101,7 +101,7 @@ function Header() {
               isActive ? classes.active : undefined
             }
           >
-            <p>Gallery</p>
+            <p className={classes.forActive}>Gallery</p>
           </NavLink>
           <NavLink
             to="contact"
@@ -109,7 +109,7 @@ function Header() {
               isActive ? classes.active : undefined
             }
           >
-            <p>Contact</p>
+            <p className={classes.forActive}>Contact</p>
           </NavLink>
         </nav>
 
@@ -127,15 +127,16 @@ function Header() {
               >
                 <p>Home</p>
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 to="add-products"
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }
               >
                 <p>Add Products</p>
-              </NavLink>
-              <div className={classes.dropdownContainer}>
+              </NavLink> */}
+              <div
+                className={classes.dropdownContainer}>
                 <NavLink
                   to="#"
                   className={classes.dropdownTrigger}
@@ -145,7 +146,7 @@ function Header() {
                   <p>Collections</p>
                   {isDropdownOpen && (
                     <div className={classes.dropdownContent}>
-                      <NavLink to="/indoor" state={{ indoor: indoor }}>Indoor</NavLink>
+                      <NavLink to="/indoor" state={{ indoor: indoor }} >Indoor</NavLink>
                       <NavLink to="/indoor" state={{ outdoor: outdoor }}>Outdoor</NavLink>
                       <NavLink to="/indoor" state={{ office: office }}>Office</NavLink>
                     </div>
@@ -193,6 +194,7 @@ function Header() {
           </div>
         </div>
       </header>
+      {/* <hr /> */}
       <Outlet />
       {favModalOpen && <FavModal closeModal={closeModal} />}
       {authModalOpen && <AuthModal closeModal={closeModal} />}

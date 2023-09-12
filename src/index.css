@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  background-color: rgb(163, 163, 163);
+  background-color: rgba(235, 235, 235, 0.726);
 }
 
 
 button {
   font: inherit;
-  background-color: #240370;
+  background-color: #004f9a;
   color: white;
-  border: 1px solid #240370;
+  border: 1px solid #004f9a;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
@@ -16,8 +16,8 @@ button {
 
 button:hover,
 button:active {
-  background-color: #33059e;
-  border-color: #33059e;
+  background-color: #2867a1;
+  border-color: #52789c;
 }
 
 button:disabled,

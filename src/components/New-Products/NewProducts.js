@@ -1,14 +1,9 @@
-
-
-
-
-
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import AddProductsPage from "./AddProductsPage";
 
 function NewProductPage() {
-  const isAdmin = useSelector((state) => state.isAdmin);
+  // const isAdmin = useSelector((state) => state.isAdmin);
 
   function addProductHandler(enteredProductData) {
     const selectedOption = enteredProductData.option;
@@ -40,14 +35,10 @@ function NewProductPage() {
         console.log("An error occurred while storing product data.", error);
       });
   }
-console.log(isAdmin)
+  // console.log(isAdmin)
   return (
     <>
-      {isAdmin ? (
-        <AddProductsPage onAddProduct={addProductHandler} />
-      ) : (
-        <p>You are not authorized to access this page.</p>
-      )}
+      <AddProductsPage onAddProduct={addProductHandler} />
     </>
   );
 }

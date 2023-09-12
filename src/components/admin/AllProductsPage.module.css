@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #036ed3;
+    color: aliceblue;
+    padding-bottom: 7px;
+}
+
+.container p{
+    font-size: 1.1em;
+}
+
+.active {
+    border-radius: 100px;
+    background: #004f9a;
+    padding: 5px 25px
+  }
+
+  .product {
+    border: 2px solid #004f9a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 70px;
+    height: 100%;
+  }
+
+  .img {
+    width: 350px;
+    height: 300px;
+  }
+
+  .btn {
+    margin: 20px 0 20px 0;
+  }
+
+  .category {
+    cursor: pointer;
+  }
+
+  .activeCategory {
+    border-radius: 100px;
+    background: #004f9a;
+    padding: 5px 25px
+  }

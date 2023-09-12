@@ -1,0 +1,37 @@
+.img {
+    width: 50px;
+    height: 50px;
+}
+
+.price {
+    color: #2a8703;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.priceDiv {
+    display: flex;
+}
+
+.btn {
+    margin-left: 70px;
+}
+
+.checkOut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.checkOutBtn {
+    margin-top: 10px;
+}
+
+.cartItem {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}

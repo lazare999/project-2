@@ -2,23 +2,31 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgb(100, 100, 100);
+  background-color: #0861b4;
   padding: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.2rem;
 }
 
 a {
   text-decoration: none;
-  color: aliceblue;
+  color: #fff;
 }
 
-a:hover {
-  color: gray;
+.forActive:hover { 
+  border-radius: 100px;
+  background: #004f9a;
 }
+
+
+/* a:hover {
+  color: rgb(165, 42, 42);
+} */
 
 .active {
-  color: rgb(241, 83, 83);
+  border-radius: 100px;
+  background: #004f9a;
+  padding: 5px 25px
 }
 
 .category {
@@ -28,9 +36,18 @@ a:hover {
 }
 
 .category p {
-  margin: 0.5em; 
+  margin: 0.5em;
+  padding: 0.7em;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
 }
 
+.category p:hover {
+  border-radius: 100px;
+  background: #004f9a;
+}
 
 
 .dropdownContainer {
@@ -57,7 +74,7 @@ a:hover {
   position: relative;
 }
 
-.dropdownTriggerp{
+.dropdownTriggerp {
   display: flex;
   align-items: center;
 }
@@ -87,7 +104,7 @@ a:hover {
 
 .dropdownTrigger:hover .dropdownContent {
   display: block;
- 
+
 }
 
 .dropdownContent a {
@@ -120,7 +137,7 @@ a:hover {
 
 .profileIcon {
   cursor: pointer;
-  
+
 }
 
 .favoritesIcon {
@@ -150,7 +167,7 @@ a:hover {
   display: none;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1300px) {
   .burgerIcon {
     display: block;
   }
@@ -182,6 +199,7 @@ a:hover {
   .modalCategory a {
     color: #fff;
   }
+
   .dropdownContent {
     display: none;
     position: absolute;
@@ -193,7 +211,7 @@ a:hover {
     margin: 0;
   }
 
-  
+
   .iconsContainer {
     display: flex;
     gap: 10px;

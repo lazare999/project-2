@@ -1,8 +1,28 @@
 .link {
     text-decoration: none;
-    color: green
+    font: inherit;
+    background-color: #004f9a;
+    color: white;
+    border: 1px solid #004f9a;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn {
+    margin: 10px 0 10px 0;
 }
 
 .error{
     color: red;
 }
+
+
+
+.singIn {
+    border: 2px solid #004f9a; /* Add this line to set the border */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+

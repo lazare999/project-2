@@ -1,5 +1,8 @@
 .form {
-  padding: 3rem;
+  padding: 2rem;
+  border: 2px solid #007bff; /* Adjust the border color and thickness as needed */
+  border-radius: 5px;
+ margin: 2.5rem;
 }
 
 .control {
@@ -25,21 +28,25 @@
 .actions {
   margin-top: 1rem;
   text-align: right;
+  display: flex;
+  justify-content: space-around;
 }
 
 .actions button {
   font: inherit;
   cursor: pointer;
-  background-color: #77002e;
+  background-color: #004f9a;
   color: white;
   padding: 0.5rem 1.5rem;
-  border: 1px solid #77002e;
+  border: 1px solid #004f9a;
   border-radius: 4px;
   font-weight: bold;
 }
 
 .actions button:hover,
 .actions button:active {
-  background-color: #a50e48;
-  border-color: #a50e48;
+  background-color: #2867a1;
+  border-color: #52789c;
 }
+
+

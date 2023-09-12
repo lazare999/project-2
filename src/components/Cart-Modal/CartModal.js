@@ -6,8 +6,8 @@ function CartModal({closeModal}) {
     <div className={classes.modalWrapper}>
       <div className={classes.modalBackdrop} />
       <div className={classes.modalBox}>
+         <button onClick={closeModal} className={classes.btn}>Close</button> 
         <div className={classes.modal}>
-         <button onClick={closeModal}>Close</button> 
        
         <Cart />
         </div>
