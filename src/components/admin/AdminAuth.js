@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase";
-import { signInWithEmailAndPassword } from 'firebase/auth'; // Import the Firebase auth method
+import { signInWithEmailAndPassword, getIdToken } from 'firebase/auth'; 
 
 import classes from './AdminAuth.module.css';
 
@@ -9,25 +9,24 @@ const AdminAuth = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState(''); // Add state for the password
+  const [password, setPassword] = useState(''); 
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // Sign in with Firebase using email and password
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-      // Check if the entered email is 'admin@admin.com'
       if (email === 'admin@admin.com') {
-        // Redirect to 'admin-panel' path
+        const token = await getIdToken(user);
+        localStorage.setItem('adminUserToken', token);
         navigate('/admin-panel');
       } else {
         setErrorMessage('Invalid email address');
       }
     } catch (error) {
-      // Handle authentication error
       console.error(error);
       setErrorMessage('Invalid email or password');
     }
@@ -54,8 +53,8 @@ const AdminAuth = () => {
             type="password"
             id="password"
             placeholder="Enter Password"
-            value={password} // Bind the password value
-            onChange={(e) => setPassword(e.target.value)} // Handle password input change
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
         <button type="submit">Submit</button>
@@ -65,3 +64,14 @@ const AdminAuth = () => {
 };
 
 export default AdminAuth;
+
+export async function checkAuthLoader() {
+  const user = auth.currentUser; 
+  const token = user ? await getIdToken(user) : null;
+
+  if (!token) {
+    return redirect('/');
+  }else {
+    return null
+  }
+}

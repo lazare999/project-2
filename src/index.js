@@ -27,13 +27,14 @@ import AdminPanel from "./components/admin/AdminPanel";
 import AllProductsPage from "./components/admin/AllPdoructsPage";
 import AddNewProducts from "./components/admin/AddNewProducts";
 import ProductsDetail from "./components/admin/ProductsDetail";
+import { checkAuthLoader } from "./components/admin/AdminAuth";
 
 const router = createBrowserRouter([
   { path: '/admin', element: <Admin /> },
-  { path: 'admin-panel', element: <AdminPanel /> },
-  { path: 'all-products', element: <AllProductsPage /> },
-  { path: 'products-detail', element: <ProductsDetail /> },
-  { path: 'add-new-products', element: <AddNewProducts /> },
+  { path: 'admin-panel', element: <AdminPanel />, loader: checkAuthLoader },
+  { path: 'all-products', element: <AllProductsPage />, loader: checkAuthLoader },
+  { path: 'products-detail', element: <ProductsDetail />, loader: checkAuthLoader },
+  { path: 'add-new-products', element: <AddNewProducts />, loader: checkAuthLoader },
   {
     path: "/",
     element: <Header />,
