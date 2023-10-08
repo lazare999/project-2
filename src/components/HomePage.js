@@ -50,6 +50,9 @@ function HomePage() {
   }, []);
 
   const calculateAverageRating = (itemID) => {
+    if (!ratings) {
+      return 0; 
+    }
     const itemRatings = Object.values(ratings).filter(
       (rating) => rating.itemID === itemID
     );
